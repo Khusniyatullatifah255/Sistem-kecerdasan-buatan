@@ -1,0 +1,70 @@
+[System]
+Name='Fuzzy-Penentuan Penjurusan'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=2
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='NIPA'
+Range=[55 100]
+NumMFs=3
+MF1='Rendah':'trapmf',[25 55 65 70]
+MF2='Normal':'trapmf',[65 70 75 85]
+MF3='Tinggi':'trapmf',[75 85 100 116.2]
+
+[Input2]
+Name='NIPS'
+Range=[55 100]
+NumMFs=3
+MF1='Rendah':'trapmf',[38.8 40.4 65 70]
+MF2='Normal':'trapmf',[65 70 75 85]
+MF3='Tinggi':'trapmf',[75 85 107.916666666667 116]
+
+[Input3]
+Name='IQ'
+Range=[90 130]
+NumMFs=3
+MF1='Biasa':'trapmf',[75.6 88.4 95 110]
+MF2='Cerdas':'trapmf',[95 110 115 120]
+MF3='Sangat_Cerdas':'trapmf',[115 120 133.015873015873 144]
+
+[Input4]
+Name='Minat'
+Range=[0 100]
+NumMFs=3
+MF1='Tidak_Minat':'trapmf',[-36 -4 10 50]
+MF2='Biasa':'trimf',[10 50 90]
+MF3='Minat':'trapmf',[64 90 104 136]
+
+[Output1]
+Name='IPA'
+Range=[0 1]
+NumMFs=3
+MF1='Rendah':'trapmf',[-0.36 0 0.1 0.4]
+MF2='Sedang':'trapmf',[0.1 0.4 0.6 0.9]
+MF3='Tinggi':'trapmf',[0.64 0.9 1 1.36]
+
+[Output2]
+Name='IPS'
+Range=[0 1]
+NumMFs=3
+MF1='Rendah':'trapmf',[-0.36 -0.04 0.1 0.4]
+MF2='Sedang':'trapmf',[0.1 0.4 0.6 0.9]
+MF3='Tinggi':'trapmf',[0.6 0.9 1.04 1.36]
+
+[Rules]
+1 2 1 2, 1 2 (1) : 1
+1 2 1 3, 2 2 (1) : 1
+1 2 2 2, 2 2 (1) : 1
+1 2 2 3, 3 1 (1) : 1
+2 3 1 2, 2 3 (1) : 1
+2 3 1 3, 2 2 (1) : 1
+2 3 2 2, 2 2 (1) : 1
+2 3 2 3, 3 1 (1) : 1
